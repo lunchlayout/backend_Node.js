@@ -1,0 +1,22 @@
+{
+    "compileOnSave": true,
+    "compilerOptions": {
+        "strict": true,
+        "forceConsistentCasingInFileNames": true,
+        "noEmitOnError": true,
+        "strictNullChecks": true,
+        "target": "ES6",
+        "outDir": "dist",
+        "declaration": true,
+        "declarationDir": "dist/d.ts",
+        "module": "ESNext",
+        "allowJs": true,
+        "checkJs": false,
+        "moduleResolution": "Node",
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true
+    },
+    "include": [
+        "src/**/*"
+    ]
+}
