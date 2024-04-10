@@ -91,16 +91,50 @@ components:
         id:
           type: string
           description: dish id
+        cafe_id:
+          type: string
+          description: cafe id
         name:
           type: string
           description: dish name
-        model:
+        description:
           type: string
-          description: link to gltf model
+          description: dish description 
+        price:
+          type: integer
+          description: dish price
+        ingredients:
+          type: array
+          description: dish ingredients
+          items:
+            type: string
+        allergens:
+          type: array
+          description: dish allergens
+          items:
+            type: string
+        kbzhu:
+          type: object
+          properties:
+            calories:
+              type: integer
+              description: dish calories
+            proteins:
+              type: integer
+              description: dish proteins
+            fats:
+              type: integer
+              description: dish fats
+            carbohydrates:
+              type: integer
+              description: dish carbohydrates
         content:
           type: object
           description: dish media content
-          properties:   
+          properties:
+            modelSrc:
+              type: string
+              description: link to gltf model   
             facts:
               type: array
               description: dish facts
@@ -125,40 +159,7 @@ components:
                   src:
                     type: string
                     description: link to video about dish
-        info:
-          type: object
-          properties:
-            description:
-              type: string
-              description: dish description 
-            price:
-              type: string
-              description: dish price
-            ingredients:
-              type: array
-              description: dish ingredients
-              items:
-                type: string
-            allergens:
-              type: array
-              description: dish allergens
-              items:
-                type: string
-            kbzhu:
-              type: object
-              properties:
-                calories:
-                  type: integer
-                  description: dish calories
-                proteins:
-                  type: integer
-                  description: dish proteins
-                fats:
-                  type: integer
-                  description: dish fats
-                carbohydrates:
-                  type: integer
-                  description: dish carbohydrates
+            
               
                 
 
