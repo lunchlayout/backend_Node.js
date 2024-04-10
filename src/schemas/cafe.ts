@@ -8,14 +8,16 @@ interface ICafe {
 
 interface ICafeDocument extends ICafe, Document {}
 
-const cafeSchema = new Schema<ICafeDocument>({
+const CafeSchema = new Schema<ICafeDocument>({
     name: {
-        require: true,
+        type: String,
+        required: true,
         unique: true,
         trim: true
     },
     logo: {
-        require: true,
+        type: String,
+        required: true,
         unique: true,
         trim: true
     }
@@ -25,6 +27,6 @@ const cafeSchema = new Schema<ICafeDocument>({
     strict: true
 })
 
-const cafeModel = model('Cafe', cafeSchema);
+const CafeModel = model('Cafe', CafeSchema);
 
-export {cafeModel, cafeSchema, ICafe, ICafeDocument}
+export {CafeModel, CafeSchema, ICafe, ICafeDocument}

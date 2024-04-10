@@ -1,16 +1,47 @@
-import { Schema, Document, model, Types } from "mongoose";
+import { Schema, Document, model } from "mongoose";
 
 interface IFact {
     description: string,
     img: string
 }
+interface IFactDocument extends IFact, Document {}
+
 interface IVideo {
     title: string,
     src: string
 }
+interface IVideoDocument extends IVideo, Document {}
+
+const FactSchema = new Schema<IFactDocument>({
+    description: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    img: {
+        type: String,
+        required: true,
+        trim: true
+    }
+
+})
+
+const VideoSchema = new Schema<IVideoDocument>({
+    title: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    src: {
+        type: String,
+        required: true,
+        trim: true
+    }
+
+})
 
 interface IDishContent {
-    dishId: Types.ObjectId,
+    dishId: Schema.Types.ObjectId,
     modelSrc: string,
     facts: IFact[],
     videos: IVideo[]
@@ -18,19 +49,23 @@ interface IDishContent {
 
 interface IDishContentDocument extends IDishContent, Document {}
 
-const dishContentSchema = new Schema<IDishContentDocument>({
+const DishContentSchema = new Schema<IDishContentDocument>({
     dishId: {
-        ref: 'dishes',
-        require: true
+        type: Schema.Types.ObjectId,
+        required: true,
+        ref: 'dishes'
     },
     modelSrc: {
-        require: true,
+        type: String,
+        required: true,
         trim: true
     },
     facts: {
-        require: true
+        type: [FactSchema],
+        required: true
     },
     videos: {
+        type: [VideoSchema],
         required: true
     }
 
@@ -40,6 +75,6 @@ const dishContentSchema = new Schema<IDishContentDocument>({
     strict: true
 })
 
-const dishContentModel = model('DishContent', dishContentSchema);
+const DishContentModel = model('DishContent', DishContentSchema);
 
-export {dishContentModel, dishContentSchema, IDishContent, IDishContentDocument}
+export {DishContentModel, DishContentSchema, IDishContent, IDishContentDocument}

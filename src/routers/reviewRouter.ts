@@ -4,7 +4,7 @@ import { ReviewController } from '../controllers/index.js'
 const reviewRouter = Router();
 
 reviewRouter.route('/')
-            .post(ReviewController.sendReview);
+            .post(ReviewController.sendReview)
 
 
 export {reviewRouter}

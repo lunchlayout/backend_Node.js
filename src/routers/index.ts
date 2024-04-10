@@ -5,10 +5,10 @@ import { dishRouter } from "./dishRouter.js";
 
 const mainRouter = Router();
 
-mainRouter.use('reviews', reviewRouter);
+mainRouter.use('/reviews', reviewRouter);
 
-mainRouter.use('cafes', cafeRouter);
+mainRouter.use('/cafes', cafeRouter);
 
-mainRouter.use('dishes', dishRouter);
+mainRouter.use('/dishes', dishRouter);
 
 export {mainRouter}

@@ -7,13 +7,15 @@ interface IReview {
 
 interface IReviewDocument extends IReview, Document {}
 
-const reviewSchema = new Schema<IReviewDocument>({
+const ReviewSchema = new Schema<IReviewDocument>({
     rate: {
-        require: true,
+        type: Number,
+        required: true,
         trim: true
     },
     text: {
-        require: true,
+        type: String,
+        required: true,
         trim: true
     }
 }, {
@@ -22,6 +24,6 @@ const reviewSchema = new Schema<IReviewDocument>({
     strict: true
 })
 
-const reviewModel = model('Review', reviewSchema);
+const ReviewModel = model('Review', ReviewSchema);
 
-export {reviewModel, reviewSchema, IReview, IReviewDocument}
+export {ReviewModel, ReviewSchema, IReview, IReviewDocument}

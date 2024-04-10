@@ -12,6 +12,9 @@ const {server, database: db}: IConfig = yaml.load(path.resolve('config.yaml'))
 
 const app = express();
 
+
+app.use(/^\/assets\/(images|model)/, express.static(path.resolve('public')))
+
 app.use(express.json())
 app.use(cors({
     origin: "*"

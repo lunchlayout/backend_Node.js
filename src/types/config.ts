@@ -9,7 +9,9 @@ interface IConfigDB {
 }
 
 
-export interface IConfig {
+interface IConfig {
     server: IConfigServer
     database: IConfigDB
 }
+
+export {IConfig}

@@ -4,7 +4,7 @@ import { CafeController } from '../controllers/index.js'
 const cafeRouter = Router();
 
 cafeRouter.route('/:cafeId')
-            .get(CafeController.getDishes);
+            .get(CafeController.getCafeById);
 
 
 export {cafeRouter}
