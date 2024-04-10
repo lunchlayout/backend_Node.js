@@ -3,8 +3,11 @@ import yaml from 'node-yaml-config'
 import path from 'path'
 import { IConfig } from './types/config'
 import cors from 'cors'
+import { success } from './lib/console.js'
+import { mainRouter } from './routers/index.js'
+import { connect, disconnect } from 'mongoose'
 
-const {server: {host, port}}: IConfig = yaml.load(path.resolve('config.yaml'))
+const {server, database: db}: IConfig = yaml.load(path.resolve('config.yaml'))
 
 
 const app = express();
@@ -14,9 +17,19 @@ app.use(cors({
     origin: "*"
 }))
 
+app.use('/', mainRouter)
 
-app.listen(port, host, () => {
-    console.log(`server started on ${port} port and ${host} host`)
+app.listen(server.port, server.host, async () => {
+    console.log(`Server started on ${success(server.port)} port and ${success(server.host)} host`)
+    await connect(`mongodb://${db.host}:${db.port}/${db.name}`)
+    console.log(`DB started on ${success(db.port)} port and ${success(db.host)} host`)
+})
+
+process.on('SIGINT', async () => {
+    console.log(`Server close`)
+    console.log(`Database close`)
+    await disconnect();
+    process.exit(0)
 })
 
 

@@ -1,4 +1,8 @@
 default:
   server:
-    port: 5000
     host: localhost
+    port: 5000
+  database:
+    host: localhost
+    port: 27017
+    name: lunchlayout
