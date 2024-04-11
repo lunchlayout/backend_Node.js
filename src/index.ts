@@ -6,6 +6,7 @@ import cors from 'cors'
 import { success } from './lib/console.js'
 import { mainRouter } from './routers/index.js'
 import { connect, disconnect } from 'mongoose'
+import { errorHandler } from './middlewares/errorHandler.js'
 
 const {server, database: db}: IConfig = yaml.load(path.resolve('config.yaml'))
 
@@ -21,6 +22,8 @@ app.use(cors({
 }))
 
 app.use('/', mainRouter)
+
+app.use(errorHandler)
 
 app.listen(server.port, server.host, async () => {
     console.log(`Server started on ${success(server.port)} port and ${success(server.host)} host`)
