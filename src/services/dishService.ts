@@ -3,7 +3,7 @@ import { doFileFormat, doPublicURL } from "../lib/format.js";
 
 class DishService {
     static async getDishes(cafeId: string, query: string, page: number) {
-        const dishesWithCafe = await DishDAL.getDishes(cafeId, query, page);
+        const dishesWithCafe = await DishDAL.getDishes(cafeId, query, page - 1);
         if (dishesWithCafe.dishes.length) {
             const cafeName = doFileFormat(dishesWithCafe.cafeName);
             dishesWithCafe.dishes.forEach(dish => {

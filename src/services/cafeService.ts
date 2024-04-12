@@ -6,9 +6,7 @@ class CafeService {
         const cafe = await CafeDAL.getCafeById(cafeId);
 
         const cafeName = doFileFormat(cafe.name);
-        // cafe!.dishes.forEach(dish => {
-        //     dish.img = doPublicURL('assets', 'images', cafeName, 'dishes', doFileFormat(dish.name), 'images', dish.img)
-        // })
+
         cafe.logo = doPublicURL('assets', 'images', cafeName, cafe.logo)
 
         return cafe
