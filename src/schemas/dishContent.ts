@@ -77,4 +77,4 @@ const DishContentSchema = new Schema<IDishContentDocument>({
 
 const DishContentModel = model('DishContent', DishContentSchema);
 
-export {DishContentModel, DishContentSchema, IDishContent, IDishContentDocument}
+export {DishContentModel, DishContentSchema, IDishContent, IDishContentDocument, IVideo, IFact}
