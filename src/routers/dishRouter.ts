@@ -6,11 +6,9 @@ const dishRouter = Router();
 dishRouter.route('/')
             .get(DishController.getDishes);
 
-dishRouter.route('/:dishId/content')
-            .get(DishController.getDishContent);
+dishRouter.route('/:dishId')
+            .get(DishController.getDishById);
 
-dishRouter.route('/:dishId/about')
-            .get(DishController.getDishAbout);
 
 
 export {dishRouter}

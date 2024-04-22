@@ -1,8 +1,15 @@
 
-function doPublicURL(...paths: string[]) {
+function joinPaths(...paths: string[]) {
     return '/' + paths.join('/')
 }
-function doFileFormat(dir: string) {
-    return dir.toLowerCase().split(' ').join('_')
+
+function doPathToModel(modelName: string) {
+    return joinPaths('assets', 'models', modelName, 'model.gltf')
 }
-export {doPublicURL, doFileFormat}
+
+function doPathToImage(img: string) {
+    return joinPaths('assets', 'images', img)
+}
+
+
+export {doPathToModel, doPathToImage}

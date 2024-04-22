@@ -1,15 +1,15 @@
 import { Schema, Document, model } from "mongoose";
 
-interface IKBZHU {
+interface INutritionalValue {
     calories: number,
     proteins: number,
     fats: number,
     carbohydrates: number
 }
 
-interface IKBZHUDocument extends IKBZHU, Document {}
+interface INutritionalValueDocument extends INutritionalValue, Document {}
 
-const KBZHUSchema = new Schema<IKBZHUDocument>({
+const NutritionalValueSchema = new Schema<INutritionalValueDocument>({
     calories: {
         type: Number,
         required: true,
@@ -40,7 +40,7 @@ interface IDish {
     img: string,
     ingredients: string[],
     allergens: string[],
-    kbzhu: IKBZHU
+    nutritionalValue: INutritionalValue
 }
 
 interface IDishDocument extends IDish, Document {}
@@ -83,8 +83,8 @@ const DishSchema = new Schema<IDishDocument>({
         type: [String],
         required: true
     },
-    kbzhu: {
-        type: KBZHUSchema,
+    nutritionalValue: {
+        type: NutritionalValueSchema,
         required: true
     }
 
@@ -96,4 +96,4 @@ const DishSchema = new Schema<IDishDocument>({
 
 const DishModel = model('Dish', DishSchema);
 
-export {DishModel, DishSchema, IDish, IDishDocument, IKBZHU}
+export {DishModel, DishSchema, IDish, IDishDocument, INutritionalValue}

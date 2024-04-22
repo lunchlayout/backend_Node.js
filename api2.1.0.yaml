@@ -1,0 +1,228 @@
+openapi: 3.0.3
+info:
+  title: Lunch Layout - API 1.0
+  description: "AR application for cafes"
+  version: 2.0.0
+paths:
+  /reviews:
+    post:
+      tags:
+        - reviews
+      summary: Add a new review
+      parameters:
+        - in: body
+          name: review
+          description: review data
+          required: true
+          schema:
+            $ref: "#/components/schemas/Review"
+      description: ''
+      operationId: sendView
+      responses:
+        '200':
+          description: successful operation        
+        '404':
+          description: Bad request
+        '500':
+          description: Server error
+  /dishes:
+    get:
+      tags:
+        - dishes
+      summary: Get dishes by query string
+      operationId: getDishes
+      parameters:
+        - name: cafe_id
+          in: query
+          description: ''
+          required: true
+          schema:
+            type: string
+        - name: query
+          in: query
+          description: 'query string'
+          required: false
+          schema:
+            type: string
+        - name: page
+          in: query
+          description: 'number of page'
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dishes' 
+        '404':
+          description: Bad request
+        '500':
+          description: Server error
+  /dishes/{dish_id}:
+    get:
+      tags:
+        - dishes
+      summary: Get dish by id
+      operationId: getDishById
+      parameters:
+        - name: dish_id
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dish' 
+        '404':
+          description: Bad request
+        '500':
+          description: Server error
+          
+components:
+  schemas:
+    Review:
+      type: object
+      properties:
+        rate:
+          type: integer
+          description: review rate
+        text:
+          type: string
+          description: review text
+    Dishes:
+      type: object
+      properties:
+        cafe: 
+          type: object
+          properties:
+            name:
+              type: string
+              description: cafe name
+            logo:
+              type: string
+              description: link to logotype of cafe
+        dishes:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                description: dish id
+              name:
+                type: string
+                description: dish name
+              amount:
+                type: integer
+                description: amount of dish (1500g or 50 ml)
+              unit:
+                type: string
+                description: unit for amount (g, ml etc)
+              img:
+                type: string
+                description: dish img link
+    Dish:
+      type: object
+      properties:
+        id:
+          type: string
+          description: dish id
+        cafe_id:
+          type: string
+          description: cafe id
+        name:
+          type: string
+          description: dish name
+        description:
+          type: string
+          description: dish description
+        img:
+          type: string
+          description: link to dish img  
+        amount:
+          type: integer
+          description: amount of dish (1500g or 50 ml)
+        unit:
+          type: string
+          description: unit for amount (g, ml etc)
+        ingredients:
+          type: array
+          description: dish ingredients
+          items:
+            type: string
+        allergens:
+          type: array
+          description: dish allergens
+          items:
+            type: string
+        nutritionalValue:
+          type: object
+          properties:
+            calories:
+              type: integer
+              description: dish calories
+            proteins:
+              type: integer
+              description: dish proteins
+            fats:
+              type: integer
+              description: dish fats
+            carbohydrates:
+              type: integer
+              description: dish carbohydrates
+        content:
+          type: object
+          description: dish content
+          properties: 
+            modelLink:
+              type: string
+              description: link to gltf model   
+            stories:
+              type: array
+              description: dish facts
+              items:
+                type: object 
+                properties:
+                  description:
+                    type: string
+                    description: fact about dish
+                  img:
+                    type: string
+                    description: link to dish img 
+            videos:
+              type: array
+              description: dish videos
+              items:
+                type: object 
+                properties:
+                  title:
+                    type: string
+                    description: title of video about dish
+                  link:
+                    type: string
+                    description: link to video about dish
+            questions:
+              type: array
+              description: questions about dish
+              items:
+                type: object 
+                properties:
+                  text:
+                    type: string
+                    description: question text
+                  answer:
+                    type: string
+                    description: question answer
+                  options:
+                    type: array
+                    description: answer options
+                    items:
+                      type: string

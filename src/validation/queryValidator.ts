@@ -4,9 +4,7 @@ import {number, object, string} from 'yup'
 const оbjectId = string().test({
     name: 'isObjectId',
     message: '${path} must be objectId',
-    test: value => {
-        return isValidObjectId(value)
-    }
+    test: value => isValidObjectId(value)
 })
 
 const queryDishesSchema = object({

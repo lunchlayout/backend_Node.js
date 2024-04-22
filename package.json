@@ -1,7 +1,7 @@
 {
   "name": "lunchlayout_backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "backend for lunchlayout",
   "main": "index.js",
   "type": "module",
   "scripts": {
