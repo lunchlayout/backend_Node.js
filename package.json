@@ -4,10 +4,15 @@
   "description": "backend for lunchlayout",
   "main": "index.js",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lunchlayout/backend_Node.js"
+  },
   "scripts": {
     "dev": "tsx --watch src/index.ts",
     "ts": "tsc --watch",
-    "js": "nodemon dist/index.js"
+    "js": "nodemon dist/index.js",
+    "build": "tsc && node dist/index.js"
   },
   "keywords": [],
   "author": "",
