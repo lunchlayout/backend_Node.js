@@ -9,8 +9,8 @@ const оbjectId = string().test({
 
 const queryDishesSchema = object({
     cafeId: оbjectId.required('cafeId is a required field'),
-    q: string().default(''),
-    p: number().min(1, 'Page number greater than one').default(1)
+    query: string().default(''),
+    page: number().min(1, 'Page number greater than one').default(1)
 })
 
 export {queryDishesSchema}

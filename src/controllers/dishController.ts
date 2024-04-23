@@ -8,8 +8,8 @@ import { queryDishesSchema } from "../validation/queryValidator.js";
 class DishController {
     static async getDishes(req: IGetDishesReq, res: Response, next: NextFunction) {
         try {
-            const {cafeId, q, p} = await queryDishesSchema.validate(req.query);
-            const dishes = await DishService.getDishes(cafeId, q, p);
+            const {cafeId, query, page} = await queryDishesSchema.validate(req.query);
+            const dishes = await DishService.getDishes(cafeId, query, page);
             return res.status(200).json(dishes)  
         } catch (error) {
             next(error)
