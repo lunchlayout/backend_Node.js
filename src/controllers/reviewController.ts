@@ -7,7 +7,7 @@ class ReviewController {
         try {
             const review = req.body;
             const insertedId = await ReviewService.sendReview(review);
-            return res.status(201).location(`/reviews/${insertedId}`).json({})
+            return res.status(201).location(`/reviews/${insertedId}`).json()
         } catch (error) {
             next(error)
         }
