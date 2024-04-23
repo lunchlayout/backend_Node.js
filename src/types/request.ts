@@ -5,7 +5,7 @@ interface ISendReviewReq extends Request<undefined, {insertedId: string}, IRevie
 
 interface IGetDishByIdReq extends Request<{dishId: string}> {}
 
-interface IGetDishesReq extends Request<undefined, undefined, undefined, {cafeId: string, q: string, p: number}> {}
+interface IGetDishesReq extends Request<undefined, undefined, undefined, {cafeId: string, query: string, page: number}> {}
 
 interface IGetCafeReq extends Request<{cafeId: string}> {}
 
