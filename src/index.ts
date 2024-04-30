@@ -3,6 +3,7 @@ import yaml from 'node-yaml-config'
 import path from 'path'
 import { IConfig } from './types/config'
 import cors from 'cors'
+import helmet from 'helmet'
 import { success } from './lib/console.js'
 import { mainRouter } from './routers/index.js'
 import { connect, disconnect } from 'mongoose'
@@ -20,6 +21,7 @@ app.use(express.json())
 app.use(cors({
     origin: "*"
 }))
+app.use(helmet())
 
 app.use('/', mainRouter)
 

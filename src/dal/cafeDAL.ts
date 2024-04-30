@@ -14,6 +14,7 @@ class CafeDAL {
         const itemCount = await DishModel.countDocuments({cafeId, name: {$regex: queryRegexp}});
         if (!itemCount) return {
             ...cafeInfo,
+            pageCnt: 0,
             dishes: [],
         }
         const itemsPerPage = 6;
@@ -35,6 +36,7 @@ class CafeDAL {
 
         const cafe = {
             ...cafeInfo,
+            pageCnt: paginationHelper.pageCount(),
             dishes: dishesWithId
         }
         return cafe  
