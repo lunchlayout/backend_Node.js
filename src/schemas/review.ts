@@ -1,14 +1,16 @@
 import { Schema, Document, model } from "mongoose";
 
+type Rating = 1 | 2 | 3 | 4
+
 interface IReview {
-    rate: 1 | 2 | 3 | 4,
+    rating: Rating,
     text: string
 }
 
 interface IReviewDocument extends IReview, Document {}
 
 const ReviewSchema = new Schema<IReviewDocument>({
-    rate: {
+    rating: {
         type: Number,
         required: true,
         trim: true
