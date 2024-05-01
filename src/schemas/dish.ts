@@ -29,7 +29,7 @@ const NutritionalValueSchema = new Schema<INutritionalValueDocument>({
 
 })
 
-type Unit = "ml" | "g"
+type Unit = "мл" | "г"
 
 interface IDish {
     cafeId: Schema.Types.ObjectId,
