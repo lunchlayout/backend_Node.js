@@ -2,7 +2,13 @@ default:
   server:
     host: localhost
     port: 5000
+    protocol: http
   database:
     host: localhost
     port: 27017
+    protocol: mongodb
     name: lunchLayout
+  clients:
+    - host: localhost
+      port: 3000
+      protocol: http

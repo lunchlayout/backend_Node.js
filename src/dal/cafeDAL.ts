@@ -2,7 +2,7 @@ import { Types } from "mongoose";
 import { CafeModel, ICafe } from "../schemas/cafe.js"
 import { DishModel, IDish } from "../schemas/dish.js";
 import { APIError } from "../errors/APIError.js";
-import { PaginationHelper } from "../lib/pagination.js";
+import { PaginationHelper } from "../lib/paginationHelper.js";
 
 
 class CafeDAL {

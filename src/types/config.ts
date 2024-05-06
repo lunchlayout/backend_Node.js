@@ -1,17 +1,19 @@
 interface IConfigServer {
     host: string
     port: number
+    protocol: string
 }
-interface IConfigDB {
-    host: string
-    port: number,
+interface IConfigDB extends IConfigServer {
     name: string
+}
+interface IConfigClient extends IConfigServer {
 }
 
 
 interface IConfig {
     server: IConfigServer
+    clients: IConfigClient[]
     database: IConfigDB
 }
 
-export {IConfig}
+export {IConfig, IConfigServer, IConfigDB, IConfigClient}

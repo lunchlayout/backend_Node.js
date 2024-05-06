@@ -1,14 +1,18 @@
+import path from "path"
+import { ConfigHelper } from "./configHelper"
 
 function joinPaths(...paths: string[]) {
     return '/' + paths.join('/')
 }
 
 function doPathToModel(modelName: string) {
-    return joinPaths('assets', 'models', modelName, 'model.gltf')
+    const configHelper = new ConfigHelper(path.resolve('config.yaml'))
+    return configHelper.getServerOrigin() + joinPaths('assets', 'models', modelName, 'model.gltf')
 }
 
 function doPathToImage(img: string) {
-    return joinPaths('assets', 'images', img)
+    const configHelper = new ConfigHelper(path.resolve('config.yaml'))
+    return configHelper.getServerOrigin() + joinPaths('assets', 'images', img)
 }
 
 
