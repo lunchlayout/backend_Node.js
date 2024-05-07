@@ -4,7 +4,7 @@ type Rating = 1 | 2 | 3 | 4;
 
 interface IReview {
 	rating: Rating;
-	text: string;
+	comment: string;
 }
 
 interface IReviewDocument extends IReview, Document {}
@@ -16,7 +16,7 @@ const ReviewSchema = new Schema<IReviewDocument>(
 			required: true,
 			trim: true,
 		},
-		text: {
+		comment: {
 			type: String,
 			required: true,
 			trim: true,
