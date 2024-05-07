@@ -1,10 +1,8 @@
 import { Router } from "express";
-import { CafeController } from '../controllers/index.js'
+import { CafeController } from "../controllers/index.js";
 
 const cafeRouter = Router();
 
-cafeRouter.route('/:cafeId')
-            .get(CafeController.getCafeById);
+cafeRouter.route("/:cafeId").get(CafeController.getCafeById);
 
-
-export {cafeRouter}
+export { cafeRouter };

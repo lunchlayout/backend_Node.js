@@ -1,19 +1,21 @@
-import path from "path"
-import { ConfigHelper } from "./configHelper.js"
+import path from "path";
+import { ConfigHelper } from "./configHelper.js";
 
 function joinPaths(...paths: string[]) {
-    return '/' + paths.join('/')
+	return "/" + paths.join("/");
 }
 
 function doPathToModel(modelName: string) {
-    const configHelper = new ConfigHelper(path.resolve('config.yaml'))
-    return configHelper.getServerOrigin() + joinPaths('assets', 'models', modelName, 'model.gltf')
+	const configHelper = new ConfigHelper(path.resolve("config.yaml"));
+	return (
+		configHelper.getServerOrigin() +
+		joinPaths("assets", "models", modelName, "model.gltf")
+	);
 }
 
 function doPathToImage(img: string) {
-    const configHelper = new ConfigHelper(path.resolve('config.yaml'))
-    return configHelper.getServerOrigin() + joinPaths('assets', 'images', img)
+	const configHelper = new ConfigHelper(path.resolve("config.yaml"));
+	return configHelper.getServerOrigin() + joinPaths("assets", "images", img);
 }
 
-
-export {doPathToModel, doPathToImage}
+export { doPathToModel, doPathToImage };
