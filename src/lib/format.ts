@@ -1,5 +1,5 @@
 import path from "path"
-import { ConfigHelper } from "./configHelper"
+import { ConfigHelper } from "./configHelper.js"
 
 function joinPaths(...paths: string[]) {
     return '/' + paths.join('/')

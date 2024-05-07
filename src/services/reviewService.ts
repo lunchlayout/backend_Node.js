@@ -1,5 +1,5 @@
 import { ReviewDAL } from "../dal/index.js";
-import { IReview } from "../schemas/review";
+import { IReview } from "../schemas/review.js";
 
 class ReviewService {
     static async sendReview(review: IReview) {

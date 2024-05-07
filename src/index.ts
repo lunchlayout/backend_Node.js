@@ -6,7 +6,7 @@ import { success } from './lib/console.js'
 import { mainRouter } from './routers/index.js'
 import { connect, disconnect } from 'mongoose'
 import { errorHandler } from './middlewares/errorHandler.js'
-import { ConfigHelper } from './lib/configHelper'
+import { ConfigHelper } from './lib/configHelper.js'
 
 const configHelper = new ConfigHelper(path.resolve('config.yaml'))
 

@@ -1,21 +1,21 @@
 import { Schema, Document, model } from "mongoose";
 
-interface IQuestion {
+interface IQuiz {
     dishId: Schema.Types.ObjectId,
-    text: string,
+    question: string,
     answer: string,
     options: string[]
 }
 
-interface IQuetionDocument extends IQuestion, Document {}
+interface IQuizDocument extends IQuiz, Document {}
 
-const QuetionSchema = new Schema<IQuetionDocument>({
+const QuizSchema = new Schema<IQuizDocument>({
     dishId: {
         type: Schema.Types.ObjectId,
         required: true,
         ref: 'dishes'
     },
-    text: {
+    question: {
         type: String,
         required: true,
         trim: true
@@ -31,11 +31,11 @@ const QuetionSchema = new Schema<IQuetionDocument>({
     },
 
 }, {
-    collection: 'quetions',
+    collection: 'quizzes',
     versionKey: false,
     strict: true
 })
 
-const QuetionModel = model('Quetion', QuetionSchema);
+const QuizModel = model('Quiz', QuizSchema);
 
-export {QuetionModel, QuetionSchema, IQuestion}
+export {QuizModel, QuizSchema, IQuiz}
