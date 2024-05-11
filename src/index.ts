@@ -2,11 +2,10 @@ import express from "express";
 import path from "path";
 import cors from "cors";
 import helmet from "helmet";
-import { success } from "./lib/console.js";
+import { successLog, ConfigHelper, logger } from "./lib/index.js";
 import { mainRouter } from "./routers/index.js";
 import { connect, disconnect } from "mongoose";
 import { errorHandler } from "./middlewares/errorHandler.js";
-import { ConfigHelper } from "./lib/configHelper.js";
 
 const configHelper = new ConfigHelper(path.resolve("config.yaml"));
 
@@ -29,12 +28,12 @@ app.use("/", mainRouter);
 app.use(errorHandler);
 
 app.listen(server.port, server.host, async () => {
-	console.log(
-		`Server started on ${success(server.port)} port and ${success(server.host)} host`,
+	logger.info(
+		`Server started on ${successLog(server.port)} port and ${successLog(server.host)} host`,
 	);
 	await connect(`${configHelper.getDBOrigin()}/${db.name}`);
-	console.log(
-		`DB started on ${success(db.port)} port and ${success(db.host)} host`,
+	logger.info(
+		`DB started on ${successLog(db.port)} port and ${successLog(db.host)} host`,
 	);
 });
 

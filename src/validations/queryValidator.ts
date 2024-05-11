@@ -1,8 +1,8 @@
 import { number, object, string } from "yup";
 
-const queryCafeSchema = object({
+const QueryCafeSchema = object({
 	query: string().default(""),
 	page: number().min(1, "Page number greater than one").default(1),
 });
 
-export { queryCafeSchema };
+export { QueryCafeSchema };

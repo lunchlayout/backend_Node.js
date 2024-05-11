@@ -14,4 +14,4 @@ interface IConfig {
 	database: IConfigDB;
 }
 
-export { IConfig, IConfigServer, IConfigDB, IConfigClient };
+export type { IConfig, IConfigServer, IConfigDB, IConfigClient };

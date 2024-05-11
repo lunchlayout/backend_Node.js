@@ -2,7 +2,8 @@ import { Types } from "mongoose";
 import { CafeModel, ICafe } from "../schemas/cafe.js";
 import { DishModel, IDish } from "../schemas/dish.js";
 import { APIError } from "../errors/APIError.js";
-import { PaginationHelper } from "../lib/paginationHelper.js";
+import { PaginationHelper } from "../lib/index.js";
+import { ITEMS_PER_PAGE } from "../consts/pagination.js";
 
 class CafeDAL {
 	static async getCafeById(cafeId: string, page: number, query: string) {
@@ -22,8 +23,10 @@ class CafeDAL {
 				pageCnt: 0,
 				dishes: [],
 			};
-		const itemsPerPage = 6;
-		const paginationHelper = new PaginationHelper(itemCount, itemsPerPage);
+		const paginationHelper = new PaginationHelper(
+			itemCount,
+			ITEMS_PER_PAGE,
+		);
 		const itemsOnPage = paginationHelper.pageItemCount(page);
 		if (itemsOnPage === -1) throw APIError.BadRequest();
 
@@ -31,7 +34,7 @@ class CafeDAL {
 			cafeId,
 			name: { $regex: queryRegexp },
 		})
-			.skip(page * itemsPerPage)
+			.skip(page * ITEMS_PER_PAGE)
 			.limit(itemsOnPage)
 			.select("_id name amount unit img")
 			.lean()) as (Pick<IDish, "name" | "amount" | "unit" | "img"> & {

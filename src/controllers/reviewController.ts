@@ -1,6 +1,9 @@
-import { NextFunction, Request, Response } from "express";
+import { NextFunction, Response } from "express";
 import { ISendReviewReq } from "../types/request";
 import { ReviewService } from "../services/index.js";
+import { ReviewSchema } from "../validations/reviewValidator.js";
+import { ValidationError } from "yup";
+import { logger } from "../lib/index.js";
 
 class ReviewController {
 	static async sendReview(
@@ -9,10 +12,15 @@ class ReviewController {
 		next: NextFunction,
 	) {
 		try {
-			const review = req.body;
+			const review = await ReviewSchema.validate(req.body);
 			const insertedId = await ReviewService.sendReview(review);
 			return res.status(201).location(`/reviews/${insertedId}`).json();
 		} catch (error) {
+			if (error instanceof ValidationError) {
+				logger.error(
+					`review is invalid. body: ${JSON.stringify(req.body)}`,
+				);
+			}
 			next(error);
 		}
 	}
