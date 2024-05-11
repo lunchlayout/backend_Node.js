@@ -1,5 +1,5 @@
 import chalk from "chalk";
 
-export const success = chalk.greenBright;
+export const successLog = chalk.greenBright;
 
-export const warning = chalk.yellowBright;
+export const warningLog = chalk.yellowBright;

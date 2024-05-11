@@ -6,12 +6,12 @@ import { errorRouter } from "./errorRouter.js";
 
 const mainRouter = Router();
 
-mainRouter.use('/reviews', reviewRouter);
+mainRouter.use("/reviews", reviewRouter);
 
-mainRouter.use('/cafes', cafeRouter);
+mainRouter.use("/cafes", cafeRouter);
 
-mainRouter.use('/dishes', dishRouter);
+mainRouter.use("/dishes", dishRouter);
 
-mainRouter.use('/*', errorRouter);
+mainRouter.use("/*", errorRouter);
 
-export {mainRouter}
+export { mainRouter };
