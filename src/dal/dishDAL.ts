@@ -28,8 +28,8 @@ class DishDAL {
 
 		const dishDTO = {
 			...dish,
-			content: {
-				...model,
+			modelLink: model.link,
+			entertainment: {
 				stories,
 				videos,
 				quizzes,
