@@ -2,7 +2,7 @@ import { Schema, Document, model } from "mongoose";
 
 interface IModel {
 	dishId: Schema.Types.ObjectId;
-	modelLink: string;
+	link: string;
 }
 
 interface IModelDocument extends IModel, Document {}
@@ -14,7 +14,7 @@ const ModelSchema = new Schema<IModelDocument>(
 			required: true,
 			ref: "dishes",
 		},
-		modelLink: {
+		link: {
 			type: String,
 			required: true,
 			trim: true,
