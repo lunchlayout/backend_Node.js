@@ -11,18 +11,19 @@ class CafeDAL {
 			.select("-_id")
 			.lean()) as ICafe;
 		if (!cafeInfo) throw APIError.NotFound();
-
+		const defaultRes = {
+			pageCnt: 0,
+			dishes: [],
+			...cafeInfo
+		}
 		const queryRegexp = new RegExp(`.*${query.replace(/'/g, "")}.*`, "i");
 		const itemCount = await DishModel.countDocuments({
 			cafeId,
 			name: { $regex: queryRegexp },
 		});
-		if (!itemCount)
-			return {
-				...cafeInfo,
-				pageCnt: 0,
-				dishes: [],
-			};
+		if (!itemCount) {
+			return defaultRes
+		}
 		const paginationHelper = new PaginationHelper(
 			itemCount,
 			ITEMS_PER_PAGE,
