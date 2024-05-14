@@ -2,8 +2,8 @@ import { Types } from "mongoose";
 import { CafeModel, ICafe } from "../schemas/cafe.js";
 import { DishModel, IDish } from "../schemas/dish.js";
 import { APIError } from "../errors/APIError.js";
-import { PaginationHelper } from "../lib/index.js";
 import { ITEMS_PER_PAGE } from "../consts/pagination.js";
+import { PaginationWizard } from "pagination-wizard";
 
 class CafeDAL {
 	static async getCafeById(cafeId: string, page: number, query: string) {
@@ -24,11 +24,11 @@ class CafeDAL {
 		if (!itemCount) {
 			return defaultRes
 		}
-		const paginationHelper = new PaginationHelper(
+		const pageWizard = new PaginationWizard(
 			itemCount,
 			ITEMS_PER_PAGE,
 		);
-		const itemsOnPage = paginationHelper.pageItemCount(page);
+		const itemsOnPage = pageWizard.pageItemCount(page);
 		if (itemsOnPage === -1) throw APIError.BadRequest();
 
 		const dishes = (await DishModel.find({
@@ -52,7 +52,7 @@ class CafeDAL {
 
 		const cafe = {
 			...cafeInfo,
-			pageCnt: paginationHelper.pageCount(),
+			pageCnt: pageWizard.pageCount(),
 			dishes: dishesWithId,
 		};
 		return cafe;
