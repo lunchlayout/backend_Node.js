@@ -5,6 +5,7 @@ class DishService {
 	static async getDishById(dishId: string) {
 		const dish = await DishDAL.getDishById(dishId);
 		dish.img = doPathToImage(dish.img);
+		dish.cafeLogo = doPathToImage(dish.cafeLogo);
 		dish.modelLink = doPathToModel(dish.modelLink);
 		const { entertainment } = dish;
 		for (const story of entertainment.stories) {
