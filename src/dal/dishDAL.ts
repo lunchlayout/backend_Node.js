@@ -15,8 +15,8 @@ class DishDAL {
 			.lean()) as IDish;
 		if (!dish) throw APIError.NotFound();
 		const cafe = (await CafeModel.findById(dish.cafeId)
-		.select("logo")
-		.lean()) as Pick<ICafe, 'logo'>;
+		.select("-_id logo name")
+		.lean()) as Pick<ICafe, 'logo' | 'name'>;
 		const model = (await ModelModel.findOne({ dishId })
 			.select("-_id -dishId")
 			.lean()) as Omit<IModel, "dishId">;
@@ -32,7 +32,11 @@ class DishDAL {
 
 		const dishDTO = {
 			...dish,
-			cafeLogo: cafe.logo,
+			cafeId: undefined,
+			cafe: {
+				...cafe,
+				cafeId: dish.cafeId
+			},
 			modelLink: model.link,
 			entertainment: {
 				stories,
