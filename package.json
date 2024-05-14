@@ -2,18 +2,19 @@
   "name": "lunchlayout_backend",
   "version": "1.0.0",
   "description": "backend for lunchlayout",
-  "main": "index.js",
+  "main": "dist/index.js",
   "type": "module",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/lunchlayout/backend_Node.js"
   },
   "scripts": {
-    "dev": "cross-env NODE_ENV='development' tsx --watch src/index.ts",
-    "ts": "cross-env NODE_ENV='development tsc --watch",
-    "js": "cross-env NODE_ENV='development nodemon dist/index.js",
-    "build": "cross-env NODE_ENV='production' tsc && node dist/index.js",
-    "format": "prettier --write src/"
+    "dev": "cross-env NODE_ENV=development tsx --watch src/index.ts",
+    "ts": "cross-env NODE_ENV=development tsc --watch",
+    "js": "cross-env NODE_ENV=development nodemon dist/index.js",
+    "build": "cross-env NODE_ENV=production tsc && node dist/index.js",
+    "formatting": "prettier --write src/"
   },
   "keywords": [],
   "author": "",
@@ -35,6 +36,7 @@
     "helmet": "^7.1.0",
     "mongoose": "^8.3.1",
     "node-yaml-config": "^1.0.0",
+    "pagination-wizard": "^1.0.3",
     "strip-ansi": "^7.1.0",
     "winston": "^3.13.0",
     "yup": "^1.4.0"
