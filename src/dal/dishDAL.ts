@@ -6,6 +6,7 @@ import { APIError } from "../errors/APIError.js";
 import { IStory, StoryModel } from "../schemas/story.js";
 import { IVideo, VideoModel } from "../schemas/video.js";
 import { IQuiz, QuizModel } from "../schemas/quiz.js";
+import { CafeModel, ICafe } from "../schemas/cafe.js";
 
 class DishDAL {
 	static async getDishById(dishId: string) {
@@ -13,6 +14,9 @@ class DishDAL {
 			.select("-_id")
 			.lean()) as IDish;
 		if (!dish) throw APIError.NotFound();
+		const cafe = (await CafeModel.findById(dish.cafeId)
+		.select("logo")
+		.lean()) as Pick<ICafe, 'logo'>;
 		const model = (await ModelModel.findOne({ dishId })
 			.select("-_id -dishId")
 			.lean()) as Omit<IModel, "dishId">;
@@ -28,6 +32,7 @@ class DishDAL {
 
 		const dishDTO = {
 			...dish,
+			cafeLogo: cafe.logo,
 			modelLink: model.link,
 			entertainment: {
 				stories,
