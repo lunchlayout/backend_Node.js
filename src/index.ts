@@ -13,16 +13,19 @@ const { server, database: db, clients } = configHelper;
 
 const app = express();
 
-app.use("/assets", express.static(path.resolve("public")));
-
 app.use(express.json());
+app.use(helmet({
+	crossOriginEmbedderPolicy: false,
+	crossOriginResourcePolicy: false
+}))
 app.use(
 	cors({
-		origin: clients.length ? configHelper.getClientsOrigin() : "*",
+		origin: clients.length ? configHelper.getClientsOrigin() : "*"
 	}),
 );
-app.use(helmet());
 
+
+app.use("/assets", express.static(path.resolve("public")));
 app.use("/", mainRouter);
 
 app.use(errorHandler);
