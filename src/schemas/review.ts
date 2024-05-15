@@ -18,7 +18,6 @@ const ReviewSchema = new Schema<IReviewDocument>(
 		},
 		comment: {
 			type: String,
-			required: true,
 			trim: true,
 		},
 	},

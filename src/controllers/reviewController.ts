@@ -18,7 +18,7 @@ class ReviewController {
 		} catch (error) {
 			if (error instanceof ValidationError) {
 				logger.error(
-					`review is invalid. body: ${JSON.stringify(req.body)}`,
+					`Review is invalid. Error: ${error.message}. Body: ${JSON.stringify(req.body)}`,
 				);
 			}
 			next(error);

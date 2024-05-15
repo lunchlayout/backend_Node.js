@@ -14,20 +14,17 @@ class CafeDAL {
 		const defaultRes = {
 			pageCnt: 0,
 			dishes: [],
-			...cafeInfo
-		}
+			...cafeInfo,
+		};
 		const queryRegexp = new RegExp(`.*${query.replace(/'/g, "")}.*`, "i");
 		const itemCount = await DishModel.countDocuments({
 			cafeId,
 			name: { $regex: queryRegexp },
 		});
 		if (!itemCount) {
-			return defaultRes
+			return defaultRes;
 		}
-		const pageWizard = new PaginationWizard(
-			itemCount,
-			ITEMS_PER_PAGE,
-		);
+		const pageWizard = new PaginationWizard(itemCount, ITEMS_PER_PAGE);
 		const itemsOnPage = pageWizard.pageItemCount(page);
 		if (itemsOnPage === -1) throw APIError.BadRequest();
 
