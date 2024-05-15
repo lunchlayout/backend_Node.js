@@ -4,7 +4,7 @@ import { IReview, ReviewModel } from "../schemas/review.js";
 class ReviewDAL {
 	static async sendReview(review: IReview) {
 		const { id } = await ReviewModel.create(review);
-		logger.info(`Review created. reviewId: ${id}`);
+		logger.info(`Review created. ReviewId: ${id}`);
 		return id;
 	}
 }
