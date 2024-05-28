@@ -7,10 +7,6 @@ class DishService {
 		dish.img = doPathToImage(dish.img);
 		dish.cafe.logo = doPathToImage(dish.cafe.logo);
 		dish.modelLink = doPathToModel(dish.modelLink);
-		const { entertainment } = dish;
-		for (const story of entertainment.stories) {
-			story.img = doPathToImage(story.img);
-		}
 		return dish;
 	}
 }
