@@ -21,11 +21,11 @@ class DishDAL {
 			.select("-_id -dishId")
 			.lean()) as Omit<IModel, "dishId">;
 		const stories = (await StoryModel.find({ dishId })
-			.select("-_id -dishId")
-			.lean()) as Omit<IStory, "dishId">[];
+			.select("-_id -dishId -img")
+			.lean()) as Pick<IStory, "description">[];
 		const videos = (await VideoModel.find({ dishId })
-			.select("-_id -dishId")
-			.lean()) as Omit<IVideo, "dishId">[];
+			.select("-_id -dishId -title")
+			.lean()) as Pick<IVideo, "link">[];
 		const quizzes = (await QuizModel.find({ dishId })
 			.select("-_id -dishId")
 			.lean()) as Omit<IQuiz, "dishId">[];
