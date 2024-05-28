@@ -14,16 +14,17 @@ const { server, database: db, clients } = configHelper;
 const app = express();
 
 app.use(express.json());
-app.use(helmet({
-	crossOriginEmbedderPolicy: false,
-	crossOriginResourcePolicy: false
-}))
 app.use(
-	cors({
-		origin: clients.length ? configHelper.getClientsOrigin() : "*"
+	helmet({
+		crossOriginEmbedderPolicy: false,
+		crossOriginResourcePolicy: false,
 	}),
 );
-
+app.use(
+	cors({
+		origin: clients.length ? configHelper.getClientsOrigin() : "*",
+	}),
+);
 
 app.use("/assets", express.static(path.resolve("public")));
 app.use("/", mainRouter);

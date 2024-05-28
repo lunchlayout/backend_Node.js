@@ -34,8 +34,11 @@ class CafeDAL {
 		})
 			.skip(page * ITEMS_PER_PAGE)
 			.limit(itemsOnPage)
-			.select("_id name amount unit img")
-			.lean()) as (Pick<IDish, "name" | "amount" | "unit" | "img"> & {
+			.select("_id name amount unit img description")
+			.lean()) as (Pick<
+			IDish,
+			"name" | "amount" | "unit" | "img" | "description"
+		> & {
 			_id: Types.ObjectId;
 		})[];
 
