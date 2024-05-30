@@ -24,8 +24,8 @@ class DishDAL {
 			.select("-_id -dishId -img")
 			.lean()) as Pick<IStory, "description">[];
 		const videos = (await VideoModel.find({ dishId })
-			.select("-_id -dishId -title")
-			.lean()) as Pick<IVideo, "link">[];
+			.select("-_id -dishId")
+			.lean()) as Omit<IVideo, "dishId">[];
 		const quizzes = (await QuizModel.find({ dishId })
 			.select("-_id -dishId")
 			.lean()) as Omit<IQuiz, "dishId">[];
