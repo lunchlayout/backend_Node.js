@@ -14,4 +14,12 @@ interface IGetCafeByIdReq
 		{ query: string; page: number }
 	> {}
 
-export { ISendReviewReq, IGetDishByIdReq, IGetCafeByIdReq };
+interface IGetCafesReq
+	extends Request<
+		undefined,
+		undefined,
+		undefined,
+		{ query: string; page: number }
+	> {}
+
+export { ISendReviewReq, IGetDishByIdReq, IGetCafeByIdReq, IGetCafesReq };

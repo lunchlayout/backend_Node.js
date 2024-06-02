@@ -10,6 +10,13 @@ class CafeService {
 		}
 		return cafe;
 	}
+	static async getCafes(page: number, query: string) {
+		const DALRes = await CafeDAL.getCafes(page - 1, query);
+		for (const cafe of DALRes.cafes) {
+			cafe.logo = doPathToImage(cafe.logo);
+		}
+		return DALRes;
+	}
 }
 
 export { CafeService };
