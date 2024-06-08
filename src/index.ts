@@ -27,7 +27,7 @@ app.use(
 );
 
 app.use("/assets", express.static(path.resolve("public")));
-app.use("/", mainRouter);
+app.use("/api", mainRouter);
 
 app.use(errorHandler);
 
