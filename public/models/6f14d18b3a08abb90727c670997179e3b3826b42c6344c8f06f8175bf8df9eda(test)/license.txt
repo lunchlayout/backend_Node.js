@@ -1,0 +1,11 @@
+Model Information:
+* title:	Pide Turkish pizza (Pastırmalı)
+* source:	https://sketchfab.com/3d-models/pide-turkish-pizza-pastrmal-4ed116954d3f4ad98b490647d00d206b
+* author:	Dudzy (https://sketchfab.com/Dudzy)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Pide Turkish pizza (Pastırmalı)" (https://sketchfab.com/3d-models/pide-turkish-pizza-pastrmal-4ed116954d3f4ad98b490647d00d206b) by Dudzy (https://sketchfab.com/Dudzy) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

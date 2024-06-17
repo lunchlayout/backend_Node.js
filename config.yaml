@@ -1,8 +1,8 @@
 default:
   server:
-    host: 192.168.0.127
+    host: localhost
     port: 5000
-    protocol: http
+    protocol: https
   database:
     host: 192.168.0.127
     port: 27017
@@ -11,7 +11,7 @@ default:
   clients:
     - host: 192.168.0.127
       port: 3000
-      protocol: http
+      protocol: https
     - host: localhost
       port: 3000
-      protocol: http
+      protocol: https

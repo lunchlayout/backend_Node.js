@@ -1,4 +1,4 @@
-import path from "path";
+import path from "node:path";
 
 const ERROR_LOG_PATH = path.resolve("log", "error.log");
 const COMBINED_LOG_PATH = path.resolve("log", "combined.log");
